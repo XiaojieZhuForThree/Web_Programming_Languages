@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--Created by: Xiaojie Zhu -->
+<!--Student ID: XXZ180012 -->
+<html>
+<head>
+<title>Famous Cities</title>
+</head>
+
+<!-- The CSS setups for the website -->
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*To set the paragraph font size and type*/
+p {
+	font-family: Times New Roman;
+	font-size: 30px;
+}
+
+/*To set the title*/
+h2 {
+	margin-top: 100px;
+	font-size: 40px;	
+	font-weight: bold;
+}
+
+/*To set the default image float as left*/
+img {
+	float: left;
+	margin-right: 5px;
+}
+
+/*To set the header configuration*/
+header {
+	overflow: hidden;
+	background-color: black;
+	color: white;
+}
+
+/*To set the links within the header as button blocks*/
+header a {
+	float:left;
+	display:block;
+	color: white;
+	text-align: center;
+	padding:15px 20px;
+	text-decoration: none;
+}
+
+/*To set the effects before clicking the links*/
+header a:hover {
+	background-color: gray;
+	color: black;
+}
+
+/*We use the flexbox to make sure that the layout adjusts to every type of browsers*/
+section {
+	display: flex;
+}
+
+/*To set the nav part's width, color and float type*/
+nav {
+	text-align: center;
+    float: left;
+    width: 20%;
+    background: #dcdcdc;
+
+}
+
+/*To set the lists within the nav*/
+nav ul {
+	list-style-type: none;
+	padding: 20px;
+	font-size:50px;
+	margin: 20px;
+}
+
+/*To set the article part's width, background color and float*/
+article {
+	float: left;
+	padding: 20px;
+	width: 60%;
+	background-color: white;
+}
+
+/*To set the footer's backgroundcolor, text position and text color*/
+footer {
+	background-color: gray;
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+
+/*To set the fonts within the footer*/
+footer p {
+	font-family: Helvetica;
+	font-size: 20px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+</style>
+
+<!-- The major contents of the website -->
+<body>
+	<!-- The header contains 3 links -->
+	<header>
+		<a href="#Welcome">Home</a>
+		<a href="#Cities">Cities</a>
+		<a href="#Footer">Contact Us</a>
+	</header>
+	
+	<section>
+		<!-- The nav part contains 3 links -->
+		<nav>
+			<ul>
+				<li><a href="#London">London</a></li>
+				<li><a href="#Paris">Paris</a></li>
+				<li><a href="#Tokyo">Tokyo</a></li>
+			</ul>
+		</nav>
+		<!-- The article part is divided in 3 parts for each city -->
+		<article>
+			<div>
+				<a name="Welcome"><h2 style = "font-size:40px; margin-top: 20px">Welcome</h2></a>
+		    	<p>In this website page, we will introduce 3 of the most famous cities in the world: London, Paris, and Tokyo.</p>
+		    	<p>
+		    	<q>A city is a large human settlement. Cities generally have extensive systems for housing, transportation, sanitation, utilities, land use, and communication. Their density facilitates interaction between people, government organizations and businesses, sometimes benefiting different parties in the process.</q> - From Wikipedia</p>
+		    	<a name = "Cities"><hr /></a>
+			</div>
+
+			<div>
+			    <a name = "London"><h2>London</h2></a>
+			    <img src="london.jpg" alt="London">
+			    <p>London is the capital city of England. It is the most populous city in the United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+			    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to it’s founding by the Romans, who named it Londinium.</p>
+			</div>
+
+			<div>
+			    <a name = "Paris"><h2>Paris</h2></a>
+			    <img src="paris.jpg" alt="Paris">
+			    <p>Paris is the capital and the most populous city of France. It has an area of 105 km² (41 mi²) and a population in 2013 of 2,229,621 within the city limits. Paris was founded in the 3rd century BC by a Celtic people called the Parisii, who gave the city its name. By the 12th century, Paris was the largest city in the western world, a prosperous trading center, and the home of the University of Paris, one of the oldest universities in history. At 17th century is the capital of Europe's major power. In the 18th century, it was the center stage of the French Revolution, and was an important center of finance, commerce, fashion, science, and the arts, a position it still retains today.</p>
+			</div>
+
+			<div>
+			    <a name = "Tokyo"><h2>Tokyo</h2></a>
+			    <img src="tokyo.jpg" alt="Tokyo">
+			    <p>Tokyo, officially Tokyo is one of the 47 prefectures of Japan, and is both the capital and most populous city of Japan. The Greater Tokyo Area is the most populous metropolitan area in the world.</p>			
+			</div>
+		</article>
+		<!-- the right nav part, set the float for this nav to the right -->
+		<nav style = "float: right;">
+			<!-- Contains 3 website pages' links -->
+			<ul>
+				<li><a href = "https://www.google.com">Google</a></li>
+				<li><a href = "https://www.bing.com">Bing</a></li>
+				<li><a href = "https://www.yahoo.com">Yahoo</a></li>
+			</ul>
+		</nav>
+	</section>
+
+	<!-- The footer part contains the student's information -->
+	<footer>
+		<a name = "Footer"><p>Contact: Xiaojie Zhu</p></a>
+		<p> Address: 800 W Campbell Rd</p>
+		<p> Email: xiaojie.zhu2@utdallas.edu</p>
+	</footer>
+</body>
+</html>
