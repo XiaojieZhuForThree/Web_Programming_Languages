@@ -105,8 +105,8 @@
         document.getElementById("pwd2").style.borderColor = "red";
         error = true;
       } 
-      if (error == true){
-        alert("Please input the correct information, please correct the highlighted part!");
+      if (error){
+        alert("Please input the correct information, correct the highlighted part.");
         return false;
       } else{
         alert("Sign-Up Complete!");
@@ -157,7 +157,9 @@
     </form>
      
   <div>
-    <button style = "margin-left: 40px" type="submit" class="btn btn-primary" onclick="validate()">Sign up</button>
+    <form action = "XXZ180012_PW2_section_001.html" onsubmit= "return validate()" method="post">
+    <button style = "margin-left: 40px" type="submit" class="btn btn-primary" >Sign up</button>
+  </form>
   </div>
 
 </div>
