@@ -1,0 +1,183 @@
+<!-- PW2
+Xiaojie Zhu
+XXZ180012 -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign-Up Page</title>
+<!--   we use the bootstrap for the button effects -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  
+  <style>
+    /*since it's a sign up page, we don't need it to take up the whole browser area, thus we set the width to 60%*/
+    body{
+      width: 60%;
+      margin: auto; 
+    }
+
+    h2 {
+      margin-left:40px;
+      margin-top: 50px;
+      font-size: 40px;  
+      font-weight: bold;
+    }
+
+    p {
+      margin-left:40px;
+      font-size: 20px;  
+      color: gray;
+    }
+    /*the style setup for text, email, password and checkbox*/
+    input[type=text] {
+      width: 29%;
+      padding: 20px 20px;
+      margin-left:40px;
+      margin-bottom: 20px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #F8F8F8;
+      box-sizing: border-box;
+    }
+    input[type=email] {
+      width: 60%;
+      padding: 20px 20px;
+      margin-left:40px;
+      margin-bottom: 20px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #F8F8F8;
+      box-sizing: border-box;
+    }
+
+    input[type=password] {
+      width: 60%;
+      padding: 20px 20px;
+      margin-left:40px;
+      margin-bottom: 20px;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #F8F8F8;
+      box-sizing: border-box;
+    }
+
+    input[type=checkbox] {
+      margin-left: 40px;
+      margin-right: 10px;
+    }
+
+  </style>
+  
+  <script>
+    // first function to validate the input data
+    function validate() {
+      var fn = document.getElementById("FirstName").value;
+      var ln = document.getElementById("LastName").value;
+      var em = document.getElementById("Email").value;
+      var pw1 = document.getElementById("pwd1").value;
+      var pw2 = document.getElementById("pwd2").value;
+      var click = document.getElementById('click').checked;
+      var error = false;
+      if (fn == "") {
+        document.getElementById("FirstName").style.borderColor = "red";
+        error = true;
+      } 
+      if (ln == "") {       
+        document.getElementById("LastName").style.borderColor = "red";
+        error = true;
+      } 
+      if (em == "") {        
+        document.getElementById("Email").style.borderColor = "red";
+        error = true;
+      } 
+      if (pw1 == "") {
+        
+        document.getElementById("pwd1").style.borderColor = "red";
+        error = true;
+      } 
+      if (pw2 == "") {        
+        document.getElementById("pwd2").style.borderColor = "red";
+        error = true;
+      } 
+      if (!click) {        
+        document.getElementById('check').style.backgroundColor = "red";
+        error = true;
+      }
+      if (pw1 != "" && pw2 != "" && pw1 == pw2) {
+        document.getElementById("pwd1").style.borderColor = "";
+        document.getElementById("pwd2").style.borderColor = "";        
+      }
+      if (pw1 != "" && pw2 != "" && pw1 != pw2) {        
+        document.getElementById("pwd1").style.borderColor = "red";
+        document.getElementById("pwd2").style.borderColor = "red";
+        error = true;
+      } 
+      if (error){
+        alert("Please input the correct information, correct the highlighted part(s).");
+        return false;
+      } else{
+        alert("Sign-Up Complete!");
+        return true;        
+      }
+    }
+
+    // second function to remove the highlighted effects
+    function listener(id) {
+      document.getElementById(id).style.borderColor = ""; 
+      document.getElementById(id).style.backgroundColor = ""; 
+    }
+
+  </script>
+
+</head>
+
+<body>
+  <!-- title part of the sign-up page -->
+  <div>
+    <h2>Sign up</h2>
+    <p>Please fill in the form to create an account!</p>
+    <hr align="left" width="67%">
+  </div>
+
+  <!-- the input box layout -->
+  <div>
+    <form action="">
+        <input type="text" class="form-control" onclick = "listener('FirstName')" oninput="listener('FirstName')" id="FirstName" placeholder="First Name" name="FirstName">
+        <input  onclick="listener('LastName')" style = "margin-left: 19px" type="text" class="form-control" id="LastName" placeholder="Last Name" name="LastName">
+    </form>
+
+  </div>
+
+  <div>
+    <div >
+        <input type="email" class="form-control" id="Email" placeholder="Email" name="Email" oninput="listener('Email')" onclick="listener('Email')">
+        <br>
+      </div>
+
+    <div>
+        <input type="password" class="form-control" id="pwd1" placeholder="Password" name="pwd1" oninput="listener('pwd1')" onclick="listener('pwd1')">
+        <br>
+      </div>
+
+    <div>
+        <input type="password" class="form-control" id="pwd2" placeholder="Confirm Password" name="pwd2" oninput="listener('pwd2')" onclick="listener('pwd2')">
+        <br>
+      </div>
+         
+    <div>          
+          <input type="checkbox" id = "click" name="click" oninput="listener('check')" onclick="listener('check')"> <label style = "color: gray"  id = 'check'>I accept the <a name="link1">Terms of Use</a> & <a name="link2">Privacy Policy</a></label>
+    </div>
+  <!-- the layout for submitting the data, if validated, the page will automatically refresh, if not validated, the page will remain and mark the parts that need modification  -->  
+  <div>
+    <form action = "XXZ180012_PW2.html" onsubmit= "return validate()" method="post">
+    <button style = "margin-left: 40px" type = "submit" class="btn btn-primary" >Sign up</button>
+  </form>
+  </div>
+
+</div>
+
+</body>
+</html>
