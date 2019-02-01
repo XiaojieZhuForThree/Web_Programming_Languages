@@ -82,8 +82,7 @@
         document.getElementById("LastName").style.borderColor = "red";
         error = true;
       } 
-      if (em == "") {
-        
+      if (em == "") {        
         document.getElementById("Email").style.borderColor = "red";
         error = true;
       } 
@@ -106,7 +105,7 @@
         error = true;
       } 
       if (error){
-        alert("Please input the correct information, correct the highlighted part.");
+        alert("Please input the correct information, correct the highlighted part(s).");
         return false;
       } else{
         alert("Sign-Up Complete!");
@@ -137,28 +136,28 @@
   </div>
 
   <div>
-    <form action="" >
+    <div >
         <input type="email" class="form-control" id="Email" placeholder="Email" name="Email" onclick="listener('Email')">
         <br>
-      </form>
+      </div>
 
-    <form action="" >
+    <div>
         <input type="password" class="form-control" id="pwd1" placeholder="Password" name="pwd1" onclick="listener('pwd1')">
         <br>
-      </form>
+      </div>
 
-    <form action="" >
+    <div>
         <input type="password" class="form-control" id="pwd2" placeholder="Confirm Password" name="pwd2" onclick="listener('pwd2')">
         <br>
-      </form>
+      </div>
          
-    <form action="" >          
-          <label style = "color: gray"  id = 'check'><input type="checkbox" id = "click" name="click" onclick="listener('check')"> I accept the <a name="link1">Terms of Use</a> & <a name="link2">Privacy Policy</a></label>
-    </form>
+    <div>          
+          <input type="checkbox" id = "click" name="click" onclick="listener('check')"> <label style = "color: gray"  id = 'check'>I accept the <a name="link1">Terms of Use</a> & <a name="link2">Privacy Policy</a></label>
+    </div>
      
   <div>
     <form action = "XXZ180012_PW2_section_001.html" onsubmit= "return validate()" method="post">
-    <button style = "margin-left: 40px" type="submit" class="btn btn-primary" >Sign up</button>
+    <button style = "margin-left: 40px" type = "submit" class="btn btn-primary" >Sign up</button>
   </form>
   </div>
 
