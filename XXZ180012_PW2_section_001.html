@@ -2,9 +2,11 @@
 <html>
 <head>
   <title>Sign-Up Page</title>
+<!--   we use the bootstrap for the button effects -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  
   <style>
-
+    /*since it's a sign up page, we don't need it to take up the whole browser area, thus we set the width to 60%*/
     body{
       width: 60%;
       margin: auto; 
@@ -22,7 +24,7 @@
       font-size: 20px;  
       color: gray;
     }
-
+    /*the style setup for text, email, password and checkbox*/
     input[type=text] {
       width: 29%;
       padding: 20px 20px;
@@ -66,6 +68,7 @@
   </style>
   
   <script>
+    // first function to validate the input data
     function validate() {
       var fn = document.getElementById("FirstName").value;
       var ln = document.getElementById("LastName").value;
@@ -113,21 +116,25 @@
       }
     }
 
+    // second function to remove the highlighted effects
     function listener(id) {
       document.getElementById(id).style.borderColor = ""; 
       document.getElementById(id).style.backgroundColor = ""; 
     }
+
   </script>
-  
+
 </head>
 
 <body>
+  <!-- title part of the sign-up page -->
   <div>
     <h2>Sign up</h2>
     <p>Please fill in the form to create an account!</p>
     <hr align="left" width="67%">
   </div>
 
+  <!-- the input box layout -->
   <div>
     <form action="">
         <input type="text" class="form-control" onclick="listener('FirstName')" id="FirstName" placeholder="First Name" name="FirstName">
@@ -155,7 +162,7 @@
     <div>          
           <input type="checkbox" id = "click" name="click" onclick="listener('check')"> <label style = "color: gray"  id = 'check'>I accept the <a name="link1">Terms of Use</a> & <a name="link2">Privacy Policy</a></label>
     </div>
-     
+  <!-- the layout for submitting the data, if validated, the page will automatically refresh, if not validated, the page will remain and mark the parts that need modification  -->  
   <div>
     <form action = "XXZ180012_PW2_section_001.html" onsubmit= "return validate()" method="post">
     <button style = "margin-left: 40px" type = "submit" class="btn btn-primary" >Sign up</button>
