@@ -102,11 +102,11 @@
         document.getElementById('check').style.backgroundColor = "red";
         error = true;
       }
-      if (pw1 == pw2) {
+      if (pw1 != "" && pw2 != "" && pw1 == pw2) {
         document.getElementById("pwd1").style.borderColor = "";
         document.getElementById("pwd2").style.borderColor = "";        
       }
-      if (pw1 != null && pw2 != null && pw1 != pw2) {        
+      if (pw1 != "" && pw2 != "" && pw1 != pw2) {        
         document.getElementById("pwd1").style.borderColor = "red";
         document.getElementById("pwd2").style.borderColor = "red";
         error = true;
