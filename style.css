@@ -79,6 +79,10 @@ p {
   margin-bottom: 5px;
 }
 
+p.subhead {
+    font-style: italic;
+    text-decoration: underline;
+  }
 span {
   float: right;
 }
