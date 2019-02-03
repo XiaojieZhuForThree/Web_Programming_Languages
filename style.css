@@ -1,15 +1,15 @@
+/*the boostrap default setups*/
 .navbar {
       margin-bottom: 0;
       border-radius: 0;
   }
     
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+
 .row.content {
   height: auto;
   display: flex;
 }
     
-    /* Set gray background color and 100% height */
 .sidenav {
       padding-top: 20px;
       background-color: #f1f1f1;
@@ -17,18 +17,17 @@
   }
 
 .table {
-        margin: 5px;
         height: auto;
+        margin-bottom: 75px;
+        margin-top: 75px;
 }
     
-    /* Set black background color, white text and some padding */
 footer {
       background-color: #555;
       color: white;
       padding: 15px;
   }
     
-    /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
@@ -37,19 +36,21 @@ footer {
       .row.content {height:auto;} 
   }
 
+/*the horizontal row setup*/
 hr { 
   border: 0;
   width:100%; 
   height:1px; 
   background: black; }
 
+/*the image setup*/
 img {
-/*  float: left; */
   width:235px;
   height:210px;
-  text-align: middle;
+  float:left;
 }
 
+/*the setup for heads*/
 h1 {
   font-family: "Times New Roman", Times, serif;
   font-size: 40px;
@@ -70,11 +71,18 @@ h4 {
 
 }
 
+/*header's setup*/
 header{
   margin: 5px;
   height:210px;
 }
 
+header.table{
+  margin-top:20px;
+  height:210px;
+}
+
+/*paragraph's setups*/
 p {
   margin-bottom: 5px;
 }
