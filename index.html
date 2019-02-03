@@ -1,115 +1,130 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- setup for head section -->
 <head>
-  <title>CV Page</title>
+<!--   title of the website -->
+  <title>Personal Page</title>
+
+<!-- meta for description and keywords -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Personal CV">
+  <meta name="description" content="Personal website with personal projects introduction">
   <meta name="keywords" content="HTML,CSS">
   <meta name="author" content="Xiaojie Zhu">
+
+<!-- we used the boostraph to set up the layout -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
+<!--   this is the favicon of UTD -->
+  <link rel="icon" href="UTDmono.png" type="image/x-icon"/>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-
+<!-- used bootstrap's navbar for layout -->
 <nav class="navbar navbar-inverse">
+
   <div class="container-fluid">
+<!-- 3 buttons-about, projects, and contact -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-<!--       <a class="navbar-brand" href="#">Logo</a> -->
     </div>
+
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+<!--         all linked to the appropriate areas in the page -->
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#About">About</a></li>
         <li><a href="#Projects">Projects</a></li>
         <li><a href="#Contact">Contact</a></li>
       </ul>
-<!--       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul> -->
     </div>
+
   </div>
 </nav>
   
 <div class="container-fluid text-center">
-
+<!-- left bar contains 3 major search engines -->
   <div class="row content">
     <div class="col-sm-2 sidenav">
       <p><a href="https://www.google.com/">Google</a></p>
+      <br>
       <p><a href="https://www.bing.com/">Bing</a></p>
+      <br>
       <p><a href="https://www.yahoo.com/">Yahoo</a></p>
+      <br>
     </div>
+
     <div class="col-sm-8 text-left">
 
-  <header class = "table">    
-    <h1 id = "About"><img align = "middle" src="IMG_0947.jpg" alt="profile">Xiaojie Zhu</h1>
-  </header>
+      <header class = "table">    
+<!--         profile picture -->
+        <h1 id = "About"><img src="IMG_0947.jpg" alt="profile"><br>Xiaojie Zhu</h1>
+        <p>Welcome to my personal website! My name is Xiaojie Zhu, I am a graduate student at the University of Texas at Dallas, my major is Computer Science. This website is created with with HTML and CSS technology.</p>
+      </header>
+    <!-- first section: introduction and basic information -->
+    <div class = "table">
+      <h3>Basic Information</h3>
+          <hr>
+      <p>Name: Xiaojie Zhu</p>
+      <p>Date of Birth: 06/24/1992</p>
+      <p>Email: xiaojie.zhu2@utdallas.edu</p>
 
-  <div class = "table">
-    <h3>Basic Information</h3>
-        <hr>
-    <p>Name: Xiaojie Zhu</p>
-    <p>Date of Birth: 06/24/1992</p>
-    <p>Email: xiaojie.zhu2@utdallas.edu</p>
-
-  </div>
-
-  <div class = "table">
-    <h3>Educational Information</h3>
-        <hr>
-    <h4>The University of Texas at Dallas, Richardson, Texas<span>GPA: 4.0/4.0</span></h4>
-    <p>Master of Science in Computer Science<span>Aug 2018 – Jun 2020(Expected)</span></p>
-        <br>
-    <h4>Huazhong University of Science and Technology, Wuhan, China<span>GPA: 3.4/4.0</span></h4>
-    <p>Doctor of Medicine<span>Sep 2015 – Jun 2018</span></p>  
-    <p>Bachelor of Science in Medicine<span>Sep 2010 – Jun 2015</span></p>
-    <p>Bachelor of Arts in English Language and Literature<span>Feb 2012 – Jun 2014</span></p>    
-  </div>
-
-
+    </div>
+    <!-- second section: educational background -->
+    <div class = "table">
+      <h3>Educational Information</h3>
+          <hr>
+      <h4>The University of Texas at Dallas, Richardson, Texas<span>GPA: 4.0/4.0</span></h4>
+      <p>Master of Science in Computer Science<span>Aug 2018 – Jun 2020(Expected)</span></p>
+          <br>
+      <h4>Huazhong University of Science and Technology, Wuhan, China<span>GPA: 3.4/4.0</span></h4>
+      <p>Doctor of Medicine<span>Sep 2015 – Jun 2018</span></p>  
+      <p>Bachelor of Science in Medicine<span>Sep 2010 – Jun 2015</span></p>
+      <p>Bachelor of Arts in English Language and Literature<span>Feb 2012 – Jun 2014</span></p>    
+    </div>
+    <!-- third section: projects -->
     <div class = "table" id = "Projects">
     <h3>Projects</h3>
         <hr>
     <h4>Mobile Application for Hospital Selection <span>Spring 2019</span></h4>
-    <p><p class = "subhead">Target:</p> To design and develop a mobile App that could help patients select the optimum hospital based on the mining and analysis of data such as locations, hospitals’ general and specialty rankings, and service-cost ratios.</p>
-    <p><p class = "subhead">Skill required:</p> Java, C/C++, Android Studio, UI design, PHP + MySQL</p>
+    <p class = "subhead">Target:</p> <p>To design and develop a mobile App that could help patients select the optimum hospital based on the mining and analysis of data such as locations, hospitals’ general and specialty rankings, and service-cost ratios.</p>
+    <p class = "subhead">Skill required:</p> <p>Java, C/C++, Android Studio, UI design, PHP + MySQL</p>
     <br>
     <h4>Assembly Project Design:  Computer Architecture<span>Fall 2018</span></h4>
-    <p><p class = "subhead">Target:</p> to implement a text-based game with MISP assembly language</p>
-    <p><p class = "subhead">Skill required:</p> Assembly programming language in MIPS, MARS software platform</p>    
+    <p class = "subhead">Target:</p> <p>to implement a text-based game with MISP assembly language</p>
+    <p class = "subhead">Skill required:</p> <p>Assembly programming language in MIPS, MARS software platform</p>    
   </div>
-
+    <!-- forth section: personal interests and hobbies -->
     <div class = "table">
-      <h3>Hobbies</h3>
+      <h3>Personal Interests and Hobbies</h3>
       <hr>
       <p>Tennis</p> 
       <p>Basketball</p> 
       <p>Hiking</p> 
       <p>Watching Movies</p> 
     </div>
-
   </div>
 
-    
+    <!-- the right bar contains the website resources for learning html, css and javascript -->
     <div class="col-sm-2 sidenav">
-      <div class= "well">
-        <p>ADS</p>
-      </div>
-      <div class= "well">
-        <p>ADS</p>
-      </div>
+        <p><a href = "https://www.w3schools.com/html/default.asp">Learn HTML</a></p>
+          <br>
+        <p><a href = "https://www.w3schools.com/css/default.asp">Learn CSS</a></p>
+          <br>
+        <p><a href = "https://www.w3schools.com/js/default.asp">Learn JavaScript</a></p>
+          <br>
     </div>
   </div>
 </div>
 
+<!-- the footer part contains the author's contact info -->
 <footer class="container-fluid text-center" id = "Contact">
     <p>Contact: Xiaojie Zhu</p>
     <p>Address: 800 W Campbell Rd</p>
