@@ -3,10 +3,48 @@
 <head>
 <title>Movies</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="jQuery.js"></script>
+<!-- <script src="jQuery.js"></script> -->
 </head>
 <body>
-	<table> 
+
+	<button type="Show Movie Information " onclick="loadData()">Get my CD collection</button>
+	<br><br>
+	<script>
+		function loadData() {
+
+		$.ajax({
+			 type: "GET",
+			 url: "movies.xml",
+			 dataType: "xml",
+			 success: function(playlist) {
+			    // alert("file is loaded");
+			        $(playlist).find('movie').each(function(){
+
+						var title = $(this).find('title').text();
+						var genre = $(this).find('genre').text();
+						var director = $(this).find('director').text();
+						var cast = $(this).find('cast').text();
+						var description = $(this).find('synopsis').text();
+						var rating = $(this).find('score').text();
+
+						var info = '<li>Title: ' + title +
+						', Genre: ' + genre + 
+						', Director: ' + director + 
+						', Cast: ' + cast +
+						', Description: ' + description +
+						', Rating: ' + rating +
+						'</li>';
+
+						$("#table").append(info)
+
+						// 	$("ul").append(info);
+					});
+			 	},
+			 error: function() { alert("error loading file");  }
+	    });
+	}
+	</script>
+	<table id = "table"> 
 	    <thead>
 	        <tr> 
 	            <th>Title</th>
@@ -20,5 +58,6 @@
 	    <tbody>
 	    </tbody> 
 	</table>
+
 </body>
 </html>
