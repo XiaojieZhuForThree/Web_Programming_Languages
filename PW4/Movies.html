@@ -3,55 +3,14 @@
 <head>
 <title>Movies</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<!-- <script src="jQuery.js"></script> -->
-<!-- The function to retrieval and display on HTML table "loadData" that is wrapped in script -->
-<script>
-	function loadData() {
-		$.ajax({
-			type: "GET",
-			url: "movies.xml",
-			dataType: "xml",
-			success: function(playlist) {
-				$('#table').append('<tr><th>Title</th><th>Genre</th><th>Director</th><th>Cast</th><th>Short description</th><th>IMDB-rating</th></tr>')
-				$(playlist).find('movie').each(function(){
-					var genre = [];
-					var cast = [];
-					$(this).find('genre').each(function(i, v){
-						genre.push($(v).text());
-					});
-					$(this).find('cast').find('person').each(function(i, v){
-						cast.push($(v).attr('name') + "---" + $(v).attr('role'));
-					});
-				    var data = {
-						Title : $(this).find('title').text(),
-						Genre : genre.join(", "),
-						Director : $(this).find('director').text(),
-						Cast : cast.join(", "),
-						Description : $(this).find('synopsis').text(),
-						Rating : $(this).find('score').text()
-					};		        		
-
-					var row = $('<tr />');
-
-					for (var name in data) {
-						row.append($('<td>' + data[name] + '</td>'));									
-					}
-
-					$('#table').append(row);
-				});
-			},
-			error: function() { alert("error loading file");  }
-		});
-	}
-</script>
+<script src="function.js"></script>
 </head>
 <body>
-	<h1>The Movie PlayList</h1>
-	<button type="button" onclick="loadData()">Click to Get Movie PlayList</button>
+	<h1 align = "center">The Movie PlayList</h1>
+	<div align = "center"> <button type="button" onclick="loadData()">Click here to Get Movie PlayList</button></div>
 	<br><br>
 
-	<table id = "table" table align="center"> 
-	</table>
+	<table id = "table" align="center" td width="80%" border = "1"></table>
 
 </body>
 </html>
