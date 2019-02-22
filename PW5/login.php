@@ -1,6 +1,8 @@
 <?php
+  // start the session
   session_start();
   $name = $email = $password = "";
+  // function used to trim the data
   function test_input($data) {
     $data = trim($data);
     $data = stripslashes($data);
@@ -8,9 +10,11 @@
     return $data;
   }
   if ($_SERVER["REQUEST_METHOD"] == "POST")
+    // check if the input is valid or not
   {    
     if (empty($_POST["username"]))
     {
+        // if not, go back to login page
         header('Location: login.html');
         exit();
     } 
@@ -49,11 +53,13 @@
       }
     }
   }
+  // otherwise, set the session variable and go to welcome page
   if ($_SESSION["username"] != $name){
     $_SESSION["username"] = $name;
     $_SESSION["password"] = $password;
     $_SESSION["email"] = $email;
-    $_SESSION["visited"] = 0;    
+    $_SESSION["visited"] = 0; 
+    $_SESSION["login"] = true;   
   }
 
   header('Location: welcome.php');
