@@ -1,11 +1,43 @@
+<select name = "year">
+<?php 
+   for($i = 2011 ; $i < 2016; $i++){
+      echo "<option>$i</option>";
+   }
+?>
+</select> 
+
+
 <?php
+
+$year = $genderErr = "";
+$gender = $genderErr = "";
+
 $servername = "localhost";
 $username = "root";
 $password = "root";
 
 
+
 $year = $_GET['year'];
 $gender = $_GET['gender'];
+
+if (empty($_POST["year"])) {
+    $genderErr = "Year is required";
+  } else {
+  	$year = $_GET['year'];
+  }
+
+
+if (empty($_POST["gender"])) {
+    $genderErr = "Gender is required";
+  } else {
+  	if ($_POST["gender"] == 'male'){
+    	$gender = 'm';  		
+  	}
+  	else {
+  		$gender = 'f';  
+  	}
+  }
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password);
