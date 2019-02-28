@@ -1,75 +1,132 @@
-<select name = "year">
+<form action="#" method="post">
+    <select name = "year">
+      <option value="" >Select...</option>
 
-<?php 
-   for($i = 2011 ; $i < 2016; $i++){
-      echo "<option>$i</option>";
-   }
-?>
-</select> 
+      <option value='2011' 
+         <?php if(isset($_POST['year']) && $_POST['year'] == '2011') 
+         echo 'selected= "selected"';
+          ?>
+      >2011</option>
 
-<select name="gender">
-  <option value="">Select...</option>
-  <option value="m">Male</option>
-  <option value="f">Female</option>
-</select>
+      <option value='2012' 
+         <?php if(isset($_POST['year']) && $_POST['year'] == '2012') 
+         echo 'selected= "selected"';
+          ?>
+      >2012</option>
 
+      <option value='2013' 
+         <?php if(isset($_POST['year']) && $_POST['year'] == '2013') 
+         echo 'selected= "selected"';
+          ?>
+      >2013</option>
 
+      <option value='2014' 
+         <?php if(isset($_POST['year']) && $_POST['year'] == '2014') 
+         echo 'selected= "selected"';
+          ?>
+      >2014</option>
+
+      <option value='2015' 
+         <?php if(isset($_POST['year']) && $_POST['year'] == '2015') 
+         echo 'selected= "selected"';
+          ?>
+      >2015</option>
+
+    </select> 
+
+    <select name="gender">
+
+      <option value="">Select...</option>
+
+      <option value="m" 
+         <?php if(isset($_POST['gender']) && $_POST['gender'] == 'm') 
+         echo 'selected= "selected"';
+          ?>
+      >Male</option>
+
+      <option value = 'f'
+         <?php if(isset($_POST['gender']) && $_POST['gender'] == 'f') 
+         echo 'selected= "selected"';
+          ?>
+      >Female</option>
+      
+    </select>
+    <input type="submit" name="submit" value="Select name and gender"/>
+</form>   
 
 <?php
+  $servername = "localhost";
+  $username = "root";
+  $password = "root";  
+  $year = "";
+  $gender = "";
 
-$year = $genderErr = "";
-$gender = $genderErr = "";
+if (isset($_POST['submit'])){
+  $year = $_POST['year'];
+  $gender = $_POST['gender'];
+  $conn = mysqli_connect($servername, $username, $password, 'hm3');
 
-$servername = "localhost";
-$username = "root";
-$password = "root";
-
-
-
-$year = $_GET['year'];
-$gender = $_GET['gender'];
-
-if (empty($_POST["year"])) {
-    $genderErr = "Year is required";
-  } else {
-  	$year = $_GET['year'];
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+  if ($year != '' && $gender != '') {
+    $result = mysqli_query($conn, "SELECT * FROM babynames WHERE year = '$year' AND gender = '$gender' ORDER BY year, ranking");
+    echo "<table border='1'>
+    <tr>
+    <th>Name</th>
+    <th>Ranking</th>
+    </tr>";
+    while($row = mysqli_fetch_array($result))
+    {
+    echo "<tr>";
+    echo "<td>" . $row['name'] . "</td>";
+    echo "<td>" . $row['ranking'] . "</td>";
+    echo "</tr>";
+    }
+    echo "</table>";
+    mysqli_close($conn);
   }
 
+  else {
+      $result1 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'm' ORDER BY year, ranking");
+      $result2 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'f' ORDER BY year, ranking");
+      echo "<br>";
+      echo 'Male babies: ';
+      echo "<br>";
+      echo "<table border='1'>
+      <tr>
+      <th>Name</th>
+      <th>Ranking</th>
+      </tr>";
 
-if (empty($_POST["gender"])) {
-    $genderErr = "Gender is required";
-  } else {
-    $gender = $_GET['gender'];
+      while($row = mysqli_fetch_array($result1))
+      {
+      echo "<tr>";
+      echo "<td>" . $row['name'] . "</td>";
+      echo "<td>" . $row['ranking'] . "</td>";
+      echo "</tr>";
+      }
+      echo "</table>";
+
+      echo "<br>";
+      echo 'Female babies: ';
+      echo "<br>"; 
+      echo "<table border='1'>
+      <tr>
+      <th>Name</th>
+      <th>Ranking</th>
+      </tr>";
+
+      while($row = mysqli_fetch_array($result2))
+      {
+      echo "<tr>";
+      echo "<td>" . $row['name'] . "</td>";
+      echo "<td>" . $row['ranking'] . "</td>";
+      echo "</tr>";
+      }
+      echo "</table>";
+      mysqli_close($conn);      
   }
-
-// Create connection
-$conn = mysqli_connect($servername, $username, $password);
-
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+  
 }
-echo "Connected successfully";
-
-$result = mysqli_query($conn,"SELECT * FROM babynames WHERE gender='gender' AND year = 'year'");
-while($row = mysqli_fetch_array($result))
-	{
-		echo $row['name'] . " " . $row['ranking'];
-		echo "<br>";
-	}
 ?>
-
-<!-- <?php
-// $con=mysqli_connect("example.com","peter","abc123","my_db");
-// // Check connection
-// if (mysqli_connect_errno())
-// 	{
-// 		echo "Failed to connect to MySQL: " . mysqli_connect_error();
-// 	}
-// 	$result = mysqli_query($con,"SELECT * FROM Persons WHERE FirstName='Peter'");
-// 	while($row = mysqli_fetch_array($result))
-// 		{
-// 			echo $row['FirstName'] . " " . $row['LastName'];
-// 			echo "<br>";
-// 		}
-?>  -->
