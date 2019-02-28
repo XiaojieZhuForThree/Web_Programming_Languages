@@ -49,7 +49,7 @@
          echo 'selected= "selected"';
           ?>
       >Female</option>
-      
+
     </select>
     <input type="submit" name="submit" value="Select name and gender"/>
 </form>   
@@ -61,6 +61,24 @@
   $year = "";
   $gender = "";
 
+function printValue($data) {
+  echo "<table border = '1' style = 'float: left;'>
+      <tr>
+      <th>Name</th>
+      <th>Ranking</th>
+      <th>Year</th>
+      </tr>";
+      while($row = mysqli_fetch_array($data))
+      {
+      echo "<tr>";
+      echo "<td>" . $row['name'] . "</td>";
+      echo "<td>" . $row['ranking'] . "</td>";
+      echo "<td>" . $row['year'] . "</td>";
+      echo "</tr>";
+      }
+  echo "</table>";
+  }
+
 if (isset($_POST['submit'])){
   $year = $_POST['year'];
   $gender = $_POST['gender'];
@@ -71,62 +89,15 @@ if (isset($_POST['submit'])){
   }
   if ($year != '' && $gender != '') {
     $result = mysqli_query($conn, "SELECT * FROM babynames WHERE year = '$year' AND gender = '$gender' ORDER BY year, ranking");
-    echo "<table border='1'>
-    <tr>
-    <th>Name</th>
-    <th>Ranking</th>
-    </tr>";
-    while($row = mysqli_fetch_array($result))
-    {
-    echo "<tr>";
-    echo "<td>" . $row['name'] . "</td>";
-    echo "<td>" . $row['ranking'] . "</td>";
-    echo "</tr>";
-    }
-    echo "</table>";
-    mysqli_close($conn);
+    printValue($result);
   }
 
   else {
       $result1 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'm' ORDER BY year, ranking");
       $result2 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'f' ORDER BY year, ranking");
-      echo "<br>";
-      echo 'Male babies: ';
-      echo "<br>";
-      echo "<table border='1'>
-      <tr>
-      <th>Name</th>
-      <th>Ranking</th>
-      </tr>";
-
-      while($row = mysqli_fetch_array($result1))
-      {
-      echo "<tr>";
-      echo "<td>" . $row['name'] . "</td>";
-      echo "<td>" . $row['ranking'] . "</td>";
-      echo "</tr>";
-      }
-      echo "</table>";
-
-      echo "<br>";
-      echo 'Female babies: ';
-      echo "<br>"; 
-      echo "<table border='1'>
-      <tr>
-      <th>Name</th>
-      <th>Ranking</th>
-      </tr>";
-
-      while($row = mysqli_fetch_array($result2))
-      {
-      echo "<tr>";
-      echo "<td>" . $row['name'] . "</td>";
-      echo "<td>" . $row['ranking'] . "</td>";
-      echo "</tr>";
-      }
-      echo "</table>";
-      mysqli_close($conn);      
+      printValue($result1);
+      printValue($result2);
   }
-  
+  mysqli_close($conn);
 }
 ?>
