@@ -1,10 +1,18 @@
 <select name = "year">
+
 <?php 
    for($i = 2011 ; $i < 2016; $i++){
       echo "<option>$i</option>";
    }
 ?>
 </select> 
+
+<select name="gender">
+  <option value="">Select...</option>
+  <option value="m">Male</option>
+  <option value="f">Female</option>
+</select>
+
 
 
 <?php
@@ -31,12 +39,7 @@ if (empty($_POST["year"])) {
 if (empty($_POST["gender"])) {
     $genderErr = "Gender is required";
   } else {
-  	if ($_POST["gender"] == 'male'){
-    	$gender = 'm';  		
-  	}
-  	else {
-  		$gender = 'f';  
-  	}
+    $gender = $_GET['gender'];
   }
 
 // Create connection
