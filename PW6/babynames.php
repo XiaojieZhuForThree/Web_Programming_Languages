@@ -1,4 +1,5 @@
 <form action="#" method="post">
+    <!-- create the selection options for year and gender -->
     <select name = "year">
       <option value="" >Select...</option>
 
@@ -60,6 +61,11 @@
   $password = "root";  
   $year = "";
   $gender = "";
+  $conn = mysqli_connect($servername, $username, $password, 'hm3');
+
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
 
 function printValue($data) {
   echo "<table border = '1' style = 'float: left;'>
@@ -80,24 +86,36 @@ function printValue($data) {
   }
 
 if (isset($_POST['submit'])){
+  // evaluate the values of the selection
   $year = $_POST['year'];
   $gender = $_POST['gender'];
-  $conn = mysqli_connect($servername, $username, $password, 'hm3');
-
-  if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
+  // use the sql language to query data and print it into the table
   if ($year != '' && $gender != '') {
     $result = mysqli_query($conn, "SELECT * FROM babynames WHERE year = '$year' AND gender = '$gender' ORDER BY year, ranking");
     printValue($result);
+  } elseif ($year != '' && $gender == '') {
+    $result1 = mysqli_query($conn, "SELECT * FROM babynames WHERE year = '$year' AND gender = 'm' ORDER BY year, ranking");
+    $result2 = mysqli_query($conn, "SELECT * FROM babynames WHERE year = '$year' AND gender = 'f' ORDER BY year, ranking");
+    printValue($result1);
+    printValue($result2);    
+  } elseif ($year == '' && $gender != '') {
+    $result = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = '$gender' ORDER BY year, ranking");   
+    printValue($result); 
   }
-
   else {
-      $result1 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'm' ORDER BY year, ranking");
-      $result2 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'f' ORDER BY year, ranking");
-      printValue($result1);
-      printValue($result2);
+    $result1 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'm' ORDER BY year, ranking");
+    $result2 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'f' ORDER BY year, ranking");
+    printValue($result1);
+    printValue($result2);
   }
-  mysqli_close($conn);
+  mysqli_close($conn);  
 }
+
+else {
+  $result1 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'm' ORDER BY year, ranking");
+  $result2 = mysqli_query($conn, "SELECT * FROM babynames WHERE gender = 'f' ORDER BY year, ranking");
+  printValue($result1);
+  printValue($result2);
+}
+mysqli_close($conn);
 ?>
